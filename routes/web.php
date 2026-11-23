@@ -40,7 +40,7 @@ $tasks = [new Task(
     '22/11/2026 10:00:00',
     '22/11/2026 10:00:00'
 )];
-
+// Routes
 Route::get('/', function () use ($tasks) {
     return view('first' , [
         'tasks' => $tasks,
