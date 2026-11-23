@@ -5,7 +5,9 @@
     <div>
         {{-- Blade Directive --}}
         @if(count($tasks))
-            <p>There are Tasks</p>
+            @foreach($tasks as $task)
+                <p>{{ $task->title }}</p>
+            @endforeach
         @else
             <p>There is no task found</p>
         @endif
