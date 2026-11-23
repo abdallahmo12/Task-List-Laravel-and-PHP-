@@ -42,7 +42,7 @@ $tasks = [new Task(
 )];
 // Routes
 Route::get('/', function () use ($tasks) {
-    return view('first' , [
+    return view('tasksList' , [
         'tasks' => $tasks,
     ]);
 });
