@@ -63,7 +63,7 @@ Route::get('/still-learn' , function () {
 Route::get('/learn-params/{id}', function ($id) {
     return view('itemDetails', ['id' => $id]);
 });
-
+// handle route not found
 Route::fallback(function () {
     return "No Such a Route";
 });
