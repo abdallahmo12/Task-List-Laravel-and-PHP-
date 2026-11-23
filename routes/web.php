@@ -56,6 +56,7 @@ Route::get("/apply", function () {
 });
 
 Route::get('/still-learn' , function () {
+    // redirect by route name
     return redirect()->route('learning');
 });
 
