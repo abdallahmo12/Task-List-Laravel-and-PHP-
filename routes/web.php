@@ -60,6 +60,7 @@ Route::get('/still-learn' , function () {
     return redirect()->route('learning');
 });
 
+// handle routes with params
 Route::get('/learn-params/{id}', function ($id) {
     return view('itemDetails', ['id' => $id]);
 });
