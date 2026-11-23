@@ -1,0 +1,1 @@
+This Page is Item Details and the Item Id is : {{$id}}
