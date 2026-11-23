@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+// simulate Database
 class Task {
     public function __construct(
         public int $id,
@@ -14,7 +14,7 @@ class Task {
     ) {
     }
 }
-
+// array of Data
 $tasks = [new Task(
     1,
     "Learn PHP",
@@ -61,8 +61,11 @@ Route::get('/still-learn' , function () {
 });
 
 // handle routes with params
-Route::get('/learn-params/{id}', function ($id) {
-    return view('itemDetails', ['id' => $id]);
+Route::get('/getTaskDetails/{itemId}' , function ($id) {
+    return "Task Details and it's Id is ". $id;
+});
+Route::get('/learn-params/{itemId}' , function ($id) {
+    return view('itemDetails' , ['id' => $id]);
 });
 // handle route not found
 Route::fallback(function () {
