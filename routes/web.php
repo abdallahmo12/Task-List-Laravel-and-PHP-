@@ -41,11 +41,22 @@ $tasks = [new Task(
     '22/11/2026 10:00:00'
 )];
 // Routes
-Route::get('/', function () use ($tasks) {
+Route::get('/', function () {
+    return redirect()->route('tasks.list');
+});
+Route::get('/tasks', function () use ($tasks) {
     return view('tasksList' , [
         'tasks' => $tasks,
     ]);
-});
+})->name('tasks.list');
+
+Route::get('/task/{id}' , function ($id) use ($tasks) {
+    $task = collect($tasks)->first(function ($task) use ($id) {
+        return $task->id == $id;
+    });
+    var_dump($task);
+    return view('taskDetails' , ['task' => $task]);
+})->name('tasks.show');
 
 Route::get('/learn', function () {
     return "Learn PHP and Laravel";
@@ -64,9 +75,11 @@ Route::get('/still-learn' , function () {
 Route::get('/getTaskDetails/{itemId}' , function ($id) {
     return "Task Details and it's Id is ". $id;
 });
+
 Route::get('/learn-params/{itemId}' , function ($id) {
     return view('itemDetails' , ['id' => $id]);
 });
+
 // handle route not found
 Route::fallback(function () {
     return "No Such a Route";

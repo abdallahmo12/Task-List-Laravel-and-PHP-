@@ -13,7 +13,11 @@
         @endif --}}
 
         @forelse($tasks as $task)
-            <li><span>{{ $task->id }}</span><span>{{ $task->title }}</span></li>
+            <li>
+                <a href={{ route('tasks.show' , ['id' => $task->id]) }}>
+                    <span>{{ $task->id }}</span><span>{{ $task->title }}</span>
+                </a>
+            </li>
         @empty
             <p>There is no task found</p>
         @endforelse
