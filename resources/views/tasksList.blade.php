@@ -15,7 +15,7 @@
         @forelse($tasks as $task)
             <li>
                 <a href={{ route('tasks.show' , ['id' => $task->id]) }}>
-                    <span>{{ $task->id }}</span><span>{{ $task->title }}</span>
+                    <span>{{ $task->id }}</span> . <span>{{ $task->title }}</span>
                 </a>
             </li>
         @empty

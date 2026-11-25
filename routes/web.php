@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Route;
 // simulate Database
 class Task {
@@ -27,7 +28,7 @@ $tasks = [new Task(
     2,
     "Learn Laravel",
     "Learn Laravel Foundations and Basics",
-    null,
+    "Laravel is the best framework for fullstack developers",
     false,
     '15/11/2026 10:00:00',
     '15/11/2026 10:00:00'
@@ -51,10 +52,13 @@ Route::get('/tasks', function () use ($tasks) {
 })->name('tasks.list');
 
 Route::get('/task/{id}' , function ($id) use ($tasks) {
-    $task = collect($tasks)->first(function ($task) use ($id) {
-        return $task->id == $id;
-    });
-    var_dump($task);
+    // $task = collect($tasks)->first(function ($task) use ($id) {
+    //     return $task->id == $id;
+    // });
+    $task = collect($tasks)->firstWhere('id' , $id);
+    if(!$task){
+        abort(Response::HTTP_NOT_FOUND);
+    }
     return view('taskDetails' , ['task' => $task]);
 })->name('tasks.show');
 
