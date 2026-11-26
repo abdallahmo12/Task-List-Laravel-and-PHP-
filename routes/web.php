@@ -8,7 +8,7 @@ class Task {
         public int $id,
         public string $title,
         public string $description,
-        public ?string $longDescription,
+        public ?string $long_description,
         public bool $completed,
         public string $createdAt,
         public string $updatedAt,
